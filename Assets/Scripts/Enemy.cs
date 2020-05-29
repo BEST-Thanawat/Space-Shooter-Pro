@@ -23,8 +23,8 @@ public class Enemy : MonoBehaviour
         if (transform.position.y < -5f)
             transform.position = new Vector3(Random.Range(-8f, 8f), 7, 0);
     }
-
-    private void OnTriggerEnter(Collider other)
+    
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
