@@ -13,16 +13,15 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject[] _powerups;
     private bool _stopSpawning = false;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    public void StartSpawning()
     {
         StartCoroutine(SpawnEnemyRoutine());
         StartCoroutine(SpawnPowerUpRoutine());
     }
-
     IEnumerator SpawnEnemyRoutine()
     {
+        yield return new WaitForSeconds(3f);
         while (_stopSpawning == false)
         {
             GameObject newEnemy = Instantiate(_enemy, new Vector3(Random.Range(-8, 8), 7, 0), Quaternion.identity);
@@ -39,6 +38,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnPowerUpRoutine()
     {
+        yield return new WaitForSeconds(3f);
         while (_stopSpawning == false)
         {
             Instantiate(_powerups[Random.Range(0,3)], new Vector3(Random.Range(-8, 8), 7, 0), Quaternion.identity);

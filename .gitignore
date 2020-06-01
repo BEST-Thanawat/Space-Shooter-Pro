@@ -344,3 +344,7 @@ healthchecksdb
 /Assets/Scenes
 /Assets/Prefabs
 /Assets/Materials
+/Assets/Animations/Truster_Anim.anim
+/Assets/Animations/Thruster.controller
+/Assets/Animations/PlayerHurt_Anim.anim
+/Assets/Animations/LeftEngine.controller
