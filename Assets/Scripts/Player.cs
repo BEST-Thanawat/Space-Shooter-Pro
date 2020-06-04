@@ -33,7 +33,12 @@ public class Player : MonoBehaviour
     private UIManager _uiManager;
 
     [SerializeField]
-    private GameObject _leftEngine, _rightEngine; 
+    private GameObject _leftEngine, _rightEngine;
+
+    [SerializeField]
+    private AudioSource _audioSource;
+    [SerializeField]
+    private AudioClip _audioClip;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +49,9 @@ public class Player : MonoBehaviour
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         if (_uiManager == null) Debug.Log("UIManager is null");
 
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null) Debug.Log("AudioSource is null");
+        else _audioSource.clip = _audioClip;
         //_shield = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
         //if (_spawnManage == null) Debug.Log("Shield is null");
     }
@@ -105,6 +113,8 @@ public class Player : MonoBehaviour
         {
             Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
         }
+
+        _audioSource.Play();
     }
 
     public void Damage()

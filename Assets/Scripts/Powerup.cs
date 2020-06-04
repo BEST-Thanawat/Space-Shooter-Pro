@@ -9,6 +9,8 @@ public class Powerup : MonoBehaviour
     [SerializeField]
     private PowerUp PowerUpType;
     // Update is called once per frame
+    [SerializeField]
+    private AudioClip audioClip;
     void Update()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
@@ -17,8 +19,9 @@ public class Powerup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+         if (other.tag == "Player")
         {
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
             Player player = other.GetComponent<Player>();
             if (player != null)
             {
@@ -36,8 +39,9 @@ public class Powerup : MonoBehaviour
                     default:
                         break;
                 }
+                //
             }
-            
+
             Destroy(gameObject);
         }
     }
